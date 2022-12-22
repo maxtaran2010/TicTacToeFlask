@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="1" >
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="ui two item menu">
+      <a class="item" href="/">General</a>
+      <a class="item active">Code: {{code}}</a>
+    </div>
+    <div class="ui grid">
+      <div class="six wide column" style="text-align: center">
+          <div class="ui container">
+              <h3 class="header">Players</h3>
+
+              {% for i in room['users'] %}
+              {{i}},
+              {% endfor %}
+              <h3 class="header">Code: {{code}}</h3>
+          </div>
+      </div>
+      <div class="ten wide column" style="text-align: center">
+          <div class="ui container">
+        <div class="ui four column grid">
+        {% for row in range(room['world']|length) %}
+            <div class="row" style="height: 210px">
+                {% for elem in range(room['world'][row]|length) %}
+                <div class="column" style="width: 210px">
+                    <form action="/click">
+                        <input type="hidden" value="{{value}}" name="value">
+                        <input type="hidden" value="{{row}}|{{elem}}" name="pos">
+                        <input type="hidden" value="{{code}}" name="code">
+                        <input type="hidden" value="{{name}}" name="name">
+                        <button class='ui button yellow' type="submit" style="width: 200px !important; font-size: 50px; height: 200px">
+                            {% if room['world'][row][elem] == "" %}
+                            _
+                            {% else %}
+                            {{room['world'][row][elem]}}
+                            {% endif %}
+                        </button>
+                    </form>
+
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+            <form action="/clear">
+                <input type="hidden" name="name" value="{{name}}">
+                <input type="hidden" name="value" value="{{value}}">
+                <input type="hidden" name="code" value="{{code}}">
+                <button type="submit" class='ui button red' style="margin-top: 20px;"> Reset </button>
+            </form>
+        </div>
+          </div>
+      </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

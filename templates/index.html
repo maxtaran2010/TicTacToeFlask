@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="ui two item menu">
+      <a class="item active">General</a>
+      <a class="item">Game</a>
+    </div>
+    <div class="ui container" style="width: 45%">
+        <form class="ui form" action="/game">
+            <h4 class="ui dividing header">Log in by code</h4>
+            <div class="two fields">
+                <div class="field">
+                  <label>Name</label>
+                  <input type="text" placeholder="Name" name="name">
+                  <input type="hidden" name="value" value="o">
+                </div>
+                <div class="field">
+                  <label>Code</label>
+                  <input type="text" placeholder="Code" name="code">
+                </div>
+            </div>
+            <button type="submit" class="ui button yellow" tabindex="0">log in</button>
+        </form><br>
+        <form class="ui form" action="/create">
+            <h4 class="ui dividing header">Create room</h4>
+                <div class="field">
+                  <label>Name</label>
+                  <input type="text" placeholder="Name" name="name">
+                  <input type="hidden" name="value" value="x">
+                </div>
+            <button type="submit" class="ui button yellow" tabindex="0">Create</button>
+        </form>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
